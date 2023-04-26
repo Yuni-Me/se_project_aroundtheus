@@ -18,7 +18,7 @@
   display: flex;
   background-color: white;
   color: black;
-  padding: 25px 20px;
+  padding: 22px 18px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
   justify-content: space-between;
@@ -34,11 +34,21 @@
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
-  line-height: 29px;
+  line-height: 1.2;
+  padding-right: 8px;
 }
 .card__like-button {
   width: 21px;
   height: 18px;
-  background: transparent url(../images/like-inactive.svg);
-  border: none;
+  background: transparent url(../images/like-inactive.svg) center no-repeat;
+  box-sizing: border-box;
+  border: transparent;
+  /* border: 1px solid #fff; */
+  padding-left: 10px;
+  padding-right: 1px;
+  margin-right: 0;
+  transition: 1s opacity ease-in-out;
+}
+.card__like-button:hover {
+  opacity: 0.5;
 }

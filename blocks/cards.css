@@ -1,8 +1,4 @@
 .cards {
-  /* max-width: 880px;
-  margin: 50px 200px; */
-  /* display: flex;
-  align-items: center; */
 }
 .cards__list {
   display: grid;
@@ -11,4 +7,10 @@
   grid-gap: 20px 17px;
   padding: 0;
   margin: 50px auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .cards__list {
+    grid-gap: 20px 15px;
+  }
 }
