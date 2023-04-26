@@ -5,6 +5,7 @@
 - Intro
 - Figma
 - Images
+- GitHub Page
 
 **Intro**
 
