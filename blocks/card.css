@@ -3,8 +3,6 @@
   height: 361px;
   border-radius: 15%;
   list-style: none;
-  /* border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px; */
   display: flex;
   flex-direction: column;
 }
@@ -13,16 +11,6 @@
   height: 282px;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
-}
-.card__description {
-  display: flex;
-  background-color: white;
-  color: black;
-  padding: 22px 18px;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-  justify-content: space-between;
-  align-items: center;
 }
 .card__text {
   margin: 0;
@@ -34,9 +22,22 @@
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
-  line-height: 1.2;
+  line-height: 29px;
   padding-right: 8px;
+  max-width: 220px;
+  letter-spacing: 0em;
 }
+.card__description {
+  display: flex;
+  background-color: white;
+  color: black;
+  padding: 22px 18px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .card__like-button {
   width: 21px;
   height: 18px;
