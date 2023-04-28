@@ -115,9 +115,9 @@
     justify-self: flex-start;
     height: 18px;
     width: 18px;
+    background-size: 7px 7px;
   }
   .profile__description {
-    margin-top: 14px;
     margin-bottom: 36px;
     font-size: 14px;
     justify-self: center;
@@ -125,5 +125,7 @@
   .profile__add-button {
     margin: auto;
     width: 282px;
+    box-sizing: border-box;
+    background-size: 16px 16px;
   }
 }

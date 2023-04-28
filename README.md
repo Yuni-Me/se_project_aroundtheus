@@ -17,8 +17,7 @@ This project is made so all the elements are displayed correctly on popular scre
 
 **Images**
 
-![Around The U.S.](./images/aroundtheus3.jpg)![Around The U.S.](./images/aroundtheus2.jpg)
-![Around The U.S.](./images/aroundtheus1.jpg)
+![Around The U.S.](./images/aroundtheus.jpg)
 
 **Site**
 
