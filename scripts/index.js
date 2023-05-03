@@ -67,7 +67,6 @@ function getCardElement(cardData) {
   cardElementImage.src = cardData.link;
   cardElementImage.alt = cardData.name;
   cardElementText.textContent = cardData.name;
-  //   cardElementImage;
   return cardElement;
 }
 /*----------------------------------------------------------------------------*/
@@ -95,7 +94,6 @@ closeModal.addEventListener("click", togglePopupModal);
 nameInput.addEventListener("click", clearField);
 descriptionInput.addEventListener("click", clearField);
 formModal.addEventListener("submit", handleProfileFormSubmit);
-// profileAddButton.addEventListener("click", );
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardElementList.append(cardElement);
