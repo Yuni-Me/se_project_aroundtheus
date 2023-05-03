@@ -61,7 +61,6 @@ function populateField() {
 }
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
-  console.log(cardData);
   const cardElementImage = cardElement.querySelector(".card__image");
   const cardElementText = cardElement.querySelector(".card__text");
   cardElementImage.src = cardData.link;
