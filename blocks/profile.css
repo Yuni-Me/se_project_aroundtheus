@@ -16,7 +16,7 @@
   grid-template-areas:
     "title button"
     "description description";
-  grid-template-columns: minmax(auto, 373px) auto;
+  grid-template-columns: minmax(min-content, max-content) 1fr;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
 }
@@ -64,18 +64,12 @@
   opacity: 0.6;
 }
 @media screen and (max-width: 980px) {
-  .profile__info {
-    grid-template-columns: minmax(auto, 330px) auto;
-  }
   .profile__title {
     font-size: 36px;
     line-height: 1.2;
   }
 }
 @media screen and (max-width: 890px) {
-  .profile__info {
-    grid-template-columns: minmax(auto, 290px) auto;
-  }
   .profile__title {
     font-size: 32px;
     line-height: 1.2;
@@ -85,9 +79,6 @@
   }
 }
 @media screen and (max-width: 720px) {
-  .profile__info {
-    grid-template-columns: auto auto;
-  }
   .profile__title {
     font-size: 27px;
     line-height: 1.1;
@@ -102,7 +93,6 @@
     margin: 0 0 30px;
   }
   .profile__info {
-    grid-template-columns: minmax(auto, 350px) 50px;
     justify-items: flex-end;
     text-align: center;
     max-width: 282px;

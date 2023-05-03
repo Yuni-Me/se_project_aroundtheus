@@ -25,19 +25,23 @@
             alt="Avatar"
           />
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title" id="profile-title">Jacques Cousteau</h1>
             <button
               class="profile__edit-button"
-              id="profile__edit-button"
+              id="profile-edit-button"
               type="button"
             ></button>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description" id="description">Explorer</p>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button
+            class="profile__add-button"
+            type="button"
+            id="profile-add-button"
+          ></button>
         </section>
         <section class="cards page__section">
           <ul class="cards__list">
-            <li class="card">
+            <!-- <li class="card">
               <img
                 class="card__image"
                 src="./images/yosemite.jpg"
@@ -102,7 +106,7 @@
                 <h2 class="card__text">Lago di Braies</h2>
                 <button class="card__like-button" type="button"></button>
               </div>
-            </li>
+            </li> -->
           </ul>
         </section>
       </main>
@@ -110,27 +114,40 @@
         <p class="footer__text">&copy; 2023 Around The U.S.</p>
       </footer>
     </div>
-    <div class="modal" id="profile-edit-modal">
+    <div class="modal" id="edit-modal">
       <div class="modal__container">
-        <button class="modal__close" id="modal__close"></button>
-        <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form">
+        <button type="button" class="modal__close" id="modal-close"></button>
+        <h3 class="modal__heading">Edit Profile</h3>
+        <form class="modal__form" name="form" id="modal-form">
           <input
             class="modal__input"
             type="text"
             name="title"
             placeholder="Name"
+            id="nameInput"
           />
           <input
             class="modal__input"
             type="text"
             name="description"
             placeholder="Description"
+            id="descriptionInput"
           />
-          <button class="modal__button" type="button">Save</button>
+          <button class="modal__button" type="submit" id="save-button-modal">
+            Save
+          </button>
         </form>
       </div>
     </div>
+    <template id="card-template">
+      <li class="card">
+        <img class="card__image" src="" alt="" />
+        <div class="card__description">
+          <h2 class="card__text"></h2>
+          <button class="card__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
