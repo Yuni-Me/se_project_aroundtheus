@@ -3,11 +3,28 @@
   list-style: none;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .card__image {
   width: 282px;
   height: 282px;
   border-radius: 10px 10px 0 0;
+}
+.card__trash-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  width: 18px;
+  height: 19px;
+  background: transparent url(../images/trash-inactive.svg) center no-repeat;
+  box-sizing: border-box;
+  border: transparent;
+  cursor: pointer;
+  transition: 1s opacity ease-in-out;
+}
+.card__trash-button:hover {
+  background: transparent url(../images/trash-active.svg) center no-repeat;
 }
 .card__description {
   display: flex;
@@ -40,4 +57,8 @@
 }
 .card__like-button:hover {
   opacity: 0.5;
+}
+.card__like-button_liked {
+  background: transparent url(../images/like-active.svg) center no-repeat;
+  fill: #000;
 }

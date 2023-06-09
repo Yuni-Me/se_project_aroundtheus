@@ -49,22 +49,26 @@
     </div>
     <div class="modal" id="edit-modal">
       <div class="modal__container">
-        <button type="button" class="modal__close" id="modal-close"></button>
+        <button
+          type="button"
+          class="modal__close"
+          id="edit-modal-close"
+        ></button>
         <h3 class="modal__heading">Edit Profile</h3>
-        <form class="modal__form" name="form" id="modal-form">
+        <form class="modal__form" name="form" id="edit-modal-form">
           <input
             class="modal__input"
             type="text"
             name="title"
             placeholder="Name"
-            id="nameInput"
+            id="name-input"
           />
           <input
             class="modal__input"
             type="text"
             name="description"
             placeholder="Description"
-            id="descriptionInput"
+            id="description-input"
           />
           <button class="modal__button" type="submit" id="save-button-modal">
             Save
@@ -72,8 +76,50 @@
         </form>
       </div>
     </div>
+    <div class="modal" id="add-modal">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__close"
+          id="add-modal-close"
+        ></button>
+        <h3 class="modal__heading">New Place</h3>
+        <form class="modal__form" name="form" id="add-modal-form">
+          <input
+            class="modal__input"
+            type="text"
+            name="title"
+            placeholder="Title"
+            id="titleInput"
+          />
+          <input
+            class="modal__input"
+            type="text"
+            name="link"
+            placeholder="Image Link"
+            id="linkInput"
+          />
+          <button class="modal__button" type="submit" id="add-button-modal">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="image-modal">
+      <div
+        class="modal__image-container modal__image-container_view_screen"
+        id="image-container"
+      >
+        <button
+          type="button"
+          class="modal__close modal__close_image"
+          id="image-modal-close"
+        ></button>
+      </div>
+    </div>
     <template id="card-template">
       <li class="card">
+        <button class="card__trash-button" type="button"></button>
         <img class="card__image" src="" alt="" />
         <div class="card__description">
           <h2 class="card__text"></h2>
