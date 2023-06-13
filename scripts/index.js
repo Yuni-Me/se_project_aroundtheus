@@ -29,6 +29,7 @@ const initialCards = [
 /*                                  Elements                                  */
 /*----------------------------------------------------------------------------*/
 
+const modals = [...document.querySelectorAll(".modal")];
 const profileEditButton = document.querySelector("#profile-edit-button");
 const editModal = document.querySelector("#edit-modal");
 const formEditModal = document.forms["profile-form"];
@@ -147,6 +148,18 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closePopup(popup));
 });
 
+modals.forEach((modal) => {
+  modal.addEventListener("click", (evt) => {
+    closePopup(evt.target);
+  });
+});
+
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closePopup(openedModal);
+  }
+});
 formEditModal.addEventListener("submit", (event) => {
   updateProfile();
   handleProfileFormSubmit(event);

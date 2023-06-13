@@ -51,22 +51,35 @@
       <div class="modal__container">
         <button type="button" class="modal__close"></button>
         <h3 class="modal__heading">Edit Profile</h3>
-        <form class="modal__form" name="profile-form">
+        <form class="modal__form" name="profile-form" novalidate>
           <input
             class="modal__input"
             type="text"
             name="title"
             placeholder="Name"
             id="name-input"
+            maxlength="40"
+            minlength="2"
+            required
           />
+          <span class="modal__error" id="name-input-error"></span>
           <input
             class="modal__input"
             type="text"
             name="description"
             placeholder="Description"
             id="description-input"
+            maxlength="200"
+            minlength="2"
+            required
           />
-          <button class="modal__button" type="submit" id="save-button-modal">
+          <span class="modal__error" id="description-input-error"></span>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            id="save-button-modal"
+            disabled
+          >
             Save
           </button>
         </form>
@@ -76,22 +89,33 @@
       <div class="modal__container">
         <button type="button" class="modal__close"></button>
         <h3 class="modal__heading">New Place</h3>
-        <form class="modal__form" name="card-form">
+        <form class="modal__form" name="card-form" novalidate>
           <input
             class="modal__input"
             type="text"
             name="title"
             placeholder="Title"
             id="titleInput"
+            maxlength="30"
+            minlength="1"
+            required
           />
+          <span class="modal__error" id="titleInput-error"></span>
           <input
             class="modal__input"
-            type="text"
+            type="url"
             name="link"
             placeholder="Image Link"
             id="linkInput"
+            required
           />
-          <button class="modal__button" type="submit" id="add-button-modal">
+          <span class="modal__error" id="linkInput-error"></span>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            id="add-button-modal"
+            disabled
+          >
             Save
           </button>
         </form>
@@ -118,5 +142,6 @@
       </li>
     </template>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
