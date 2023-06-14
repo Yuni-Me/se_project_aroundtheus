@@ -30,6 +30,7 @@ const initialCards = [
 /*----------------------------------------------------------------------------*/
 
 const modals = [...document.querySelectorAll(".modal")];
+const formModals = [...document.querySelectorAll(".modal__form")];
 const profileEditButton = document.querySelector("#profile-edit-button");
 const editModal = document.querySelector("#edit-modal");
 const formEditModal = document.forms["profile-form"];
@@ -68,6 +69,12 @@ function createNewCard() {
   };
   const cardElement = getCardElement(card);
   cardElementList.prepend(cardElement);
+}
+
+function resetForm(button) {
+  formAddModal.reset();
+  button.disabled = true;
+  button.classList.add("modal__button_disabled");
 }
 
 function viewImage(event) {
@@ -128,17 +135,19 @@ function closePopup(popup) {
   document.removeEventListener("keydown", closeByEscape);
 }
 
-function handleProfileFormSubmit(event) {
+function handleFormSubmit(event) {
+  const form = event.target;
+  const button = event.target.querySelector(".modal__button");
+
   event.preventDefault();
-  closePopup(editModal);
+
+  if (form.name === "profile-form") updateProfile();
+  if (form.name === "card-form") createNewCard();
+
+  closePopup(form.closest(".modal"));
+  resetForm(button);
 }
 
-function handlePlaceFormSubmit(event) {
-  event.preventDefault();
-  createNewCard();
-  event.target.reset();
-  closePopup(addModal);
-}
 /*----------------------------------------------------------------------------*/
 /*                               Event Listeners                              */
 /*----------------------------------------------------------------------------*/
@@ -158,16 +167,20 @@ closeButtons.forEach((button) => {
 });
 
 modals.forEach((modal) => {
-  modal.addEventListener("click", (evt) => {
-    closePopup(evt.target);
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("modal_opened")) {
+      if (evt.target === evt.currentTarget) {
+        closePopup(evt.target);
+      }
+    }
+    if (evt.target.classList.contains("modal_close")) {
+      if (evt.target === evt.currentTarget) {
+        closePopup(evt.target);
+      }
+    }
   });
 });
 
-formEditModal.addEventListener("submit", (event) => {
-  updateProfile();
-  handleProfileFormSubmit(event);
-});
-
-formAddModal.addEventListener("submit", (event) => {
-  handlePlaceFormSubmit(event);
+formModals.forEach((formModal) => {
+  formModal.addEventListener("submit", handleFormSubmit);
 });
