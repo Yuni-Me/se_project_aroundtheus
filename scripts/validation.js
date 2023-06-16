@@ -65,7 +65,7 @@ function setEventListeners(formElement, validationConfig) {
   });
 }
 
-function enableValidation(validationConfig) {
+const enableValidation = ({ formSelector, ...rest }) => {
   const formElements = Array.from(
     document.querySelectorAll(validationConfig.formSelector)
   );
@@ -75,7 +75,7 @@ function enableValidation(validationConfig) {
     });
     setEventListeners(formElement, validationConfig);
   });
-}
+};
 
 const validationConfig = {
   formSelector: ".modal__form",
