@@ -13,7 +13,7 @@
   visibility: hidden;
   transition: all 0.3s ease-in;
 }
-.modal_opened {
+.modal__opened {
   visibility: visible;
   opacity: 1;
 }

@@ -1,10 +1,16 @@
 import { openPopup, closePopup } from "../utils/utils.js";
+const imageModal = document.querySelector("#image-modal");
+const imgItem = document.querySelector(".modal__image-preview");
+const imgItemTitle = document.querySelector(".modal__image-title");
 
 export default class Card {
   constructor({ name, link }, cardSelector) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
+    this._cardElement = this._getTemplate();
+    this._cardImage = this._cardElement.querySelector(".card__image");
+    this._cardText = this._cardElement.querySelector(".card__text");
   }
 
   _getTemplate() {
@@ -31,7 +37,7 @@ export default class Card {
     this._cardElement
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        this._handleCardImage(event);
+        this._handleCardImage();
       });
   }
 
@@ -42,21 +48,17 @@ export default class Card {
     this._cardElement.remove();
     this._cardElement = null;
   }
-  _handleCardImage(event) {
-    const imageModal = document.querySelector("#image-modal");
-    const imgItem = document.querySelector(".modal__image-preview");
-    const imgItemTitle = document.querySelector(".modal__image-title");
+  _handleCardImage() {
+    imgItem.src = this._link;
+    imgItem.alt = this._name;
+    imgItemTitle.textContent = this._name;
     openPopup(imageModal);
-    imgItem.setAttribute("src", event.target.src);
-    imgItem.setAttribute("alt", event.target.alt);
-    imgItemTitle.textContent = event.target.alt;
   }
 
   getView() {
-    this._cardElement = this._getTemplate();
-    this._cardElement.querySelector(".card__image").src = this._link;
-    this._cardElement.querySelector(".card__image").alt = this._name;
-    this._cardElement.querySelector(".card__text").textContent = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    this._cardText.textContent = this._name;
     this._setEventListeners();
     return this._cardElement;
   }

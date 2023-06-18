@@ -44,7 +44,8 @@ const nameInput = editModal.querySelector("#name-input");
 const descriptionInput = editModal.querySelector("#description-input");
 const profileAddButton = document.querySelector("#profile-add-button");
 const addModal = document.querySelector("#add-modal");
-const formAddModal = document.forms["card-form"];
+const cardForm = document.forms["card-form"];
+const profileForm = document.forms["profile-form"];
 const cardElementList = document.querySelector(".cards__list");
 
 /*----------------------------------------------------------------------------*/
@@ -59,11 +60,8 @@ const validationSettings = {
   errorClass: "modal__error_visible",
 };
 
-const editFormElement = document.forms["profile-form"];
-const addFormElement = document.forms["card-form"];
-
-const editValidator = new FormValidator(validationSettings, editFormElement);
-const addValidator = new FormValidator(validationSettings, addFormElement);
+const editValidator = new FormValidator(validationSettings, profileForm);
+const addValidator = new FormValidator(validationSettings, cardForm);
 editValidator.enableValidation();
 addValidator.enableValidation();
 /*----------------------------------------------------------------------------*/
@@ -81,7 +79,8 @@ function updateProfile() {
 }
 
 function resetForm(button) {
-  formAddModal.reset();
+  cardForm.reset();
+  editValidator.disableButton();
 }
 
 function renderCard(cardData) {
@@ -103,27 +102,25 @@ initialCards.forEach((cardData) => {
 /*                               Event Handlers                              */
 /*----------------------------------------------------------------------------*/
 
-function handleFormSubmit(event) {
+function handleProfileFormSubmit(event) {
   const form = event.target;
-  const button = event.target.querySelector(".modal__button");
+  event.preventDefault();
+  updateProfile();
+  closePopup(form.closest(".modal"));
+  resetForm();
+}
+
+function handleCardFormSubmit(event) {
+  const form = event.target;
   const card = {
     name: titleInput.value,
     link: linkInput.value,
   };
-
   event.preventDefault();
-
-  if (form.name === "profile-form") updateProfile();
-  if (form.name === "card-form") renderCard(card);
-
+  renderCard(card);
   closePopup(form.closest(".modal"));
-  resetForm(button);
-
-  if (form.name === "profile-form") {
-    editValidator.validationOtherReset();
-    return;
-  }
-  addValidator.validationReset();
+  resetForm();
+  addValidator.resetValidation();
 }
 
 /*----------------------------------------------------------------------------*/
@@ -139,26 +136,24 @@ profileAddButton.addEventListener("click", () => {
   openPopup(addModal);
 });
 
+// modal can be closed by clicking the closeButton [X]
 closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
   button.addEventListener("click", () => closePopup(popup));
 });
 
+// modal can be closed by clicking anywhere outside its borders
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("modal_opened")) {
-      if (evt.target === evt.currentTarget) {
-        closePopup(evt.target);
-      }
+    console.log(modal);
+    if (evt.target.classList.contains("modal__opened")) {
+      closePopup(evt.target);
     }
-    if (evt.target.classList.contains("modal_close")) {
-      if (evt.target === evt.currentTarget) {
-        closePopup(evt.target);
-      }
+    if (evt.target.classList.contains("modal__close")) {
+      closePopup(evt.target);
     }
   });
 });
 
-formModals.forEach((formModal) => {
-  formModal.addEventListener("submit", handleFormSubmit);
-});
+profileForm.addEventListener("submit", handleProfileFormSubmit);
+cardForm.addEventListener("submit", handleCardFormSubmit);
