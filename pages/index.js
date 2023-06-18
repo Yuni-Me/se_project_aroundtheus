@@ -37,7 +37,6 @@ const modals = [...document.querySelectorAll(".modal")];
 const formModals = [...document.querySelectorAll(".modal__form")];
 const profileEditButton = document.querySelector("#profile-edit-button");
 const editModal = document.querySelector("#edit-modal");
-// const formEditModal = document.forms["profile-form"];
 const closeButtons = document.querySelectorAll(".modal__close");
 const profileName = document.querySelector("#profile-title");
 const profileDescription = document.querySelector("#description");
@@ -46,14 +45,10 @@ const descriptionInput = editModal.querySelector("#description-input");
 const profileAddButton = document.querySelector("#profile-add-button");
 const addModal = document.querySelector("#add-modal");
 const formAddModal = document.forms["card-form"];
-// const imageModal = document.querySelector("#image-modal");
-// const imgItem = document.querySelector(".modal__image-preview");
-// const imgItemTitle = document.querySelector(".modal__image-title");
 const cardElementList = document.querySelector(".cards__list");
-// const cardTemplate = document.querySelector("#card-template").content;
 
 /*----------------------------------------------------------------------------*/
-/*                                  Validation                                 */
+/*                                  Validation                                */
 /*----------------------------------------------------------------------------*/
 const validationSettings = {
   // formSelector: ".modal__form",
@@ -68,8 +63,8 @@ const editFormElement = document.forms["profile-form"];
 const addFormElement = document.forms["card-form"];
 
 const editValidator = new FormValidator(validationSettings, editFormElement);
-editValidator.enableValidation();
 const addValidator = new FormValidator(validationSettings, addFormElement);
+editValidator.enableValidation();
 addValidator.enableValidation();
 /*----------------------------------------------------------------------------*/
 /*                                  Functions                                 */
@@ -85,26 +80,25 @@ function updateProfile() {
   profileDescription.textContent = descriptionInput.value;
 }
 
-function createNewCard() {
-  const card = {
-    name: titleInput.value,
-    link: linkInput.value,
-  };
-  const cardElement = new Card(card, "#card-template").getView();
+function resetForm(button) {
+  formAddModal.reset();
+}
+
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
   cardElementList.prepend(cardElement);
 }
 
-function resetForm(button) {
-  formAddModal.reset();
-  button.disabled = true;
-  button.classList.add("modal__button_disabled");
+function createCard(cardData) {
+  const cardElement = new Card(cardData, "#card-template").getView();
+  return cardElement;
 }
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template");
-  const cardElement = card.getView();
+  const cardElement = createCard(cardData);
   cardElementList.append(cardElement);
 });
+
 /*----------------------------------------------------------------------------*/
 /*                               Event Handlers                              */
 /*----------------------------------------------------------------------------*/
@@ -112,14 +106,24 @@ initialCards.forEach((cardData) => {
 function handleFormSubmit(event) {
   const form = event.target;
   const button = event.target.querySelector(".modal__button");
+  const card = {
+    name: titleInput.value,
+    link: linkInput.value,
+  };
 
   event.preventDefault();
 
   if (form.name === "profile-form") updateProfile();
-  if (form.name === "card-form") createNewCard();
+  if (form.name === "card-form") renderCard(card);
 
   closePopup(form.closest(".modal"));
   resetForm(button);
+
+  if (form.name === "profile-form") {
+    editValidator.validationOtherReset();
+    return;
+  }
+  addValidator.validationReset();
 }
 
 /*----------------------------------------------------------------------------*/
