@@ -78,10 +78,10 @@ function updateProfile() {
   profileDescription.textContent = descriptionInput.value;
 }
 
-function resetForm(button) {
-  cardForm.reset();
-  editValidator.disableButton();
-}
+// function resetForm(button) {
+//   cardForm.reset();
+//   // editValidator.disableButton();
+// }
 
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
@@ -107,7 +107,7 @@ function handleProfileFormSubmit(event) {
   event.preventDefault();
   updateProfile();
   closePopup(form.closest(".modal"));
-  resetForm();
+  // resetForm();
 }
 
 function handleCardFormSubmit(event) {
@@ -119,8 +119,9 @@ function handleCardFormSubmit(event) {
   event.preventDefault();
   renderCard(card);
   closePopup(form.closest(".modal"));
-  resetForm();
-  addValidator.resetValidation();
+  // resetForm();
+  cardForm.reset();
+  addValidator.disableButton();
 }
 
 /*----------------------------------------------------------------------------*/
@@ -128,6 +129,7 @@ function handleCardFormSubmit(event) {
 /*----------------------------------------------------------------------------*/
 
 profileEditButton.addEventListener("click", () => {
+  editValidator.resetValidation();
   fillProfileInputs();
   openPopup(editModal);
 });
@@ -137,10 +139,10 @@ profileAddButton.addEventListener("click", () => {
 });
 
 // modal can be closed by clicking the closeButton [X]
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => closePopup(popup));
-});
+// closeButtons.forEach((button) => {
+//   const popup = button.closest(".modal");
+//   button.addEventListener("click", () => closePopup(popup));
+// });
 
 // modal can be closed by clicking anywhere outside its borders
 modals.forEach((modal) => {
@@ -150,7 +152,7 @@ modals.forEach((modal) => {
       closePopup(evt.target);
     }
     if (evt.target.classList.contains("modal__close")) {
-      closePopup(evt.target);
+      closePopup(modal);
     }
   });
 });
