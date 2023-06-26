@@ -1,16 +1,14 @@
-import { openPopup, closePopup } from "../utils/utils.js";
-const imageModal = document.querySelector("#image-modal");
-const imgItem = document.querySelector(".modal__image-preview");
-const imgItemTitle = document.querySelector(".modal__image-title");
+// import { openPopup, closePopup } from "../utils/utils.js";
 
 export default class Card {
-  constructor({ name, link }, cardSelector) {
+  constructor({ name, link }, cardSelector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
     this._cardElement = this._getTemplate();
     this._cardImage = this._cardElement.querySelector(".card__image");
     this._cardText = this._cardElement.querySelector(".card__text");
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -31,13 +29,13 @@ export default class Card {
     this._cardElement
       .querySelector(".card__trash-button")
       .addEventListener("click", () => {
-        this._handleTrashIcon(event);
+        this._handleTrashIcon();
       });
     // ".card__image"
     this._cardElement
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        this._handleCardImage();
+        this._handleCardClick();
       });
   }
 
@@ -49,10 +47,10 @@ export default class Card {
     this._cardElement = null;
   }
   _handleCardImage() {
-    imgItem.src = this._link;
-    imgItem.alt = this._name;
-    imgItemTitle.textContent = this._name;
-    openPopup(imageModal);
+    document.querySelector(".modal__image-preview").src = this._link;
+    document.querySelector(".modal__image-preview").alt = this._name;
+    document.querySelector(".modal__image-title").textContent = this._name;
+    openPopup(document.querySelector("#image-modal"));
   }
 
   getView() {
