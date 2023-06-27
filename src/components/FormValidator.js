@@ -53,18 +53,11 @@ export default class FormValidator {
   }
 
   _toggleButtonState() {
-    let foundInvalid = false;
-    this._inputElements.forEach((inputElement) => {
-      if (!inputElement.validity.valid) {
-        foundInvalid = true;
-      }
-    });
-
     if (this._isFoundInvalid(this._inputElements)) {
-      this.disableButton(this._submitButton);
+      this.disableButton();
       return;
     }
-    this._enableButton(this._submitButton);
+    this._enableButton();
   }
 
   _setEventListeners() {
@@ -88,6 +81,5 @@ export default class FormValidator {
       evt.preventDefault();
     });
     this._setEventListeners();
-    return this._form;
   }
 }

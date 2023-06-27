@@ -13,26 +13,22 @@ export default class PopupWithForm extends Popup {
       values[input.name] = input.value;
     });
 
-    if (Object.values(values).includes(undefined || null || "")) {
-      return;
-    } else {
-      return values;
-    }
+    return values;
   }
+
+  _handleSubmit = () => {
+    const inputValues = this._getInputValues();
+    this._handleFormSubmit(inputValues);
+  };
 
   setEventListeners() {
     super.setEventListeners();
-    this._popupForm.addEventListener("submit", () => {
-      const inputValues = this._getInputValues();
-      if (inputValues !== undefined) {
-        this._handleFormSubmit(inputValues);
-        this.close();
-      }
-    });
+    this._popupForm.addEventListener("submit", this._handleSubmit);
   }
 
   close() {
-    super.close();
+    this._popupForm.removeEventListener("submit", this._handleSubmit);
     this._popupForm.reset();
+    super.close();
   }
 }
