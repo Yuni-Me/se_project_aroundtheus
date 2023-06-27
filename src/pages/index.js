@@ -24,7 +24,7 @@ import { initialCards, validationSettings } from "../utils/constants";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Popup from "../components/Popup";
-import PopupWithImages from "../components/PopupWithImages.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
@@ -44,7 +44,7 @@ const cardsList = new Section(
 // Popups
 const popupCardForm = new PopupWithForm("#add-modal", handleAddFormSubmit);
 const popupNameForm = new PopupWithForm("#edit-modal", handleProfileFormSubmit);
-const popupWithImages = new PopupWithImages("#image-modal");
+const popupWithImage = new PopupWithImage("#image-modal");
 // UserInfo
 
 /*----------------------------------------------------------------------------*/
@@ -61,13 +61,15 @@ cardsList.renderItems();
 
 const editValidator = new FormValidator(validationSettings, profileForm);
 const addValidator = new FormValidator(validationSettings, cardForm);
+editValidator.enableValidation();
+addValidator.enableValidation();
 
 /*----------------------------------------------------------------------------*/
 /*                                  Functions                                 */
 /*----------------------------------------------------------------------------*/
 
 function handleCardClick(item) {
-  popupWithImages.open(item);
+  popupWithImage.open(item);
 }
 
 function renderCard(item) {
@@ -94,8 +96,7 @@ function handleEditButton() {
   nameInput.value = inputValues.name;
   descriptionInput.value = inputValues.job;
   popupNameForm.open();
-  popupNameForm.setEventListeners();
-  editValidator.enableValidation();
+  editValidator.resetValidation();
 }
 
 function handleAddFormSubmit(inputs) {
@@ -111,8 +112,7 @@ function handleAddFormSubmit(inputs) {
 
 function handleAddButton() {
   popupCardForm.open();
-  popupCardForm.setEventListeners();
-  addValidator.enableValidation();
+  addValidator.resetValidation();
 }
 
 /*----------------------------------------------------------------------------*/
