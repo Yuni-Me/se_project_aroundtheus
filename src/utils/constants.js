@@ -1,5 +1,3 @@
-// export const ESC_KEYCODE = 27;
-
 export const initialCards = [
   {
     name: "Yosemite Valley",
@@ -30,6 +28,9 @@ export const initialCards = [
 export const modals = [...document.querySelectorAll(".modal")];
 export const formModals = [...document.querySelectorAll(".modal__form")];
 export const profileEditButton = document.querySelector("#profile-edit-button");
+export const profileAvatarButton = document.querySelector(
+  ".profile__image-button"
+);
 export const editModal = "#edit-modal";
 export const closeButtons = document.querySelectorAll(".modal__close");
 export const profileName = document.querySelector("#profile-title");
@@ -44,6 +45,8 @@ export const profileAddButton = document.querySelector("#profile-add-button");
 export const addModal = "#add-modal";
 export const cardForm = document.forms["card-form"];
 export const profileForm = document.forms["profile-form"];
+export const confirmForm = document.forms["confirm-form"];
+export const changeForm = document.forms["change-form"];
 export const cardElements = ".cards__list";
 export const cardTemplate = "#card-template";
 export const imgItem = document.querySelector(".modal__image-preview");

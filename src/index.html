@@ -18,11 +18,10 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            class="profile__image"
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Avatar"
-          />
+          <div class="profile__avatar">
+            <img class="profile__image" src="" alt="Avatar" />
+            <button type="button" class="profile__image-button"></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title" id="profile-title">Jacques Cousteau</h1>
             <button
@@ -115,7 +114,7 @@
             id="add-button-modal"
             disabled
           >
-            Save
+            Create
           </button>
         </form>
       </div>
@@ -130,13 +129,52 @@
         <p class="modal__image-title"></p>
       </div>
     </div>
+    <div class="modal" id="change-modal">
+      <div class="modal__container" id="change-container">
+        <button type="button" class="modal__close"></button>
+        <h3 class="modal__heading">Change profile picture</h3>
+        <form class="modal__form" name="change-form" novalidate>
+          <input
+            class="modal__input"
+            type="url"
+            name="link"
+            placeholder="Image Link"
+            id="changeLinkInput"
+            required
+          />
+          <span class="modal__error" id="changeLinkInput-error"></span>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            id="change-button-modal"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="confirm-modal">
+      <div class="modal__container" id="confirm-container">
+        <button type="button" class="modal__close"></button>
+        <h3 class="modal__heading" id="confirm-heading">Are you sure?</h3>
+        <form class="modal__form" name="confirm-form" novalidate>
+          <button class="modal__button" type="submit" id="confirm-button-modal">
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
     <template id="card-template">
       <li class="card">
         <button class="card__trash-button" type="button"></button>
         <img class="card__image" src="" alt="" />
         <div class="card__description">
           <h2 class="card__text"></h2>
-          <button class="card__like-button" type="button"></button>
+          <div class="card__like">
+            <button class="card__like-button" type="button"></button>
+            <span class="card__like-counter">0</span>
+          </div>
         </div>
       </li>
     </template>

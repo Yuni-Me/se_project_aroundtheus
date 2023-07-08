@@ -3,13 +3,38 @@
   align-items: center;
   padding-top: 40px;
 }
+.profile__avatar {
+  position: relative;
+  margin-right: 30px;
+  transition: 0.3s;
+  opacity: 1;
+  z-index: 2;
+}
 .profile__image {
   height: 120px;
   width: 120px;
   border-radius: 50%;
   object-fit: cover;
   background-position: center;
-  margin-right: 30px;
+  z-index: -1;
+}
+.profile__image-button {
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
+  transition: 0.3s;
+  opacity: 1;
+}
+.profile__avatar:hover,
+.profile__image-button:hover {
+  opacity: 0.3;
+  cursor: url(../images/edit-icon-big.svg) 32 32, pointer;
 }
 .profile__info {
   display: grid;

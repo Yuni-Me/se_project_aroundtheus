@@ -27,6 +27,12 @@
   width: 100%;
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
+.modal__container[id="confirm-container"] {
+  height: 181px;
+}
+.modal__container[id="change-container"] {
+  height: 272px;
+}
 .modal__container_view_screen {
   margin-top: 40px;
 }
@@ -66,6 +72,9 @@
   font-size: 24px;
   line-height: 1.2;
 }
+.modal__heading[id="confirm-heading"] {
+  margin-bottom: 30px;
+}
 .modal__form {
   display: flex;
   flex-direction: column;
@@ -80,11 +89,14 @@
   font-size: 14px;
   line-height: 1.2;
 }
+.modal__input[name="confirm-form"] {
+  /* height: 181px; */
+}
 .modal__input:last-of-type {
   margin-bottom: 0;
 }
 .modal__error {
-  height: 30px;
+  height: 25px;
   margin-top: -19px;
   padding-top: 5px;
   padding-left: 5px;
@@ -98,23 +110,12 @@
   font-weight: 400;
   color: #ff0000;
 
-  /* padding-top: 5px; */
-  /* opacity: 0; */
-  /* position: absolute;
-  top: calc(100% + 5px);
-  left: 0; */
-  /* margin-top: -18px;
-  padding-top: 2px;
-  padding-left: 5px; */
   transition: opacity 0.3s;
   border-top: 1px solid #ff0000;
 }
-/* .modal__error_visible:last-of-type {
-  margin-top: -1px;
-} */
 .modal__button {
   box-sizing: border-box;
-  margin: 48px 0 0;
+  margin: 28px 0 0;
   width: 358px;
   height: 50px;
   font-weight: 400;
@@ -138,7 +139,9 @@
 .modal__button_disabled:hover {
   opacity: 0.1;
 }
-
+.modal__button[id="confirm-button-modal"] {
+  margin-top: 0;
+}
 @media screen and (max-width: 660px) {
   .modal__container {
     padding: 25px 22px;

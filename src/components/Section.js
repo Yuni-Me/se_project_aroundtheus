@@ -6,7 +6,6 @@ export default class Section {
   }
 
   renderItems() {
-    // uses this._ renderer to create the elements for rendering
     this._items.forEach((item) => {
       this.addItem(this._renderer(item));
     });
@@ -19,5 +18,10 @@ export default class Section {
 
   prependCard(cardElement) {
     this._container.prepend(cardElement);
+  }
+
+  removeItem({ _id }) {
+    const item = document.getElementById(_id);
+    item.remove();
   }
 }
