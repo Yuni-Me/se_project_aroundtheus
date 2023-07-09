@@ -30,13 +30,13 @@ export default class Card {
   }
 
   _fillCard() {
-    this._cardElement.querySelector(".card__image").src = this._link;
-    this._cardElement.querySelector(".card__image").alt = this._name;
+    this._cardImage = this._cardElement.querySelector(".card__image");
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     this._cardElement.querySelector(".card__text").textContent = this._name;
     this._cardElement.id = this._cardId;
     this._likeButton = this._cardElement.querySelector(".card__like-button");
     this._likeCounter = this._cardElement.querySelector(".card__like-counter");
-    this._cardImage = this._cardElement.querySelector(".card__image");
     this._trashButton = this._cardElement.querySelector(".card__trash-button");
   }
 

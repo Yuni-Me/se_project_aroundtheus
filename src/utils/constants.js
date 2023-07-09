@@ -25,16 +25,16 @@ export const initialCards = [
   },
 ];
 
-export const modals = [...document.querySelectorAll(".modal")];
-export const formModals = [...document.querySelectorAll(".modal__form")];
+// export const modals = [...document.querySelectorAll(".modal")];
+// export const formModals = [...document.querySelectorAll(".modal__form")];
 export const profileEditButton = document.querySelector("#profile-edit-button");
 export const profileAvatarButton = document.querySelector(
   ".profile__image-button"
 );
 export const editModal = "#edit-modal";
-export const closeButtons = document.querySelectorAll(".modal__close");
-export const profileName = document.querySelector("#profile-title");
-export const profileDescription = document.querySelector("#description");
+// export const closeButtons = document.querySelectorAll(".modal__close");
+// export const profileName = document.querySelector("#profile-title");
+// export const profileDescription = document.querySelector("#description");
 export const nameInput = document
   .querySelector(editModal)
   .querySelector("#name-input");
@@ -42,7 +42,7 @@ export const descriptionInput = document
   .querySelector(editModal)
   .querySelector("#description-input");
 export const profileAddButton = document.querySelector("#profile-add-button");
-export const addModal = "#add-modal";
+// export const addModal = "#add-modal";
 export const cardForm = document.forms["card-form"];
 export const profileForm = document.forms["profile-form"];
 export const confirmForm = document.forms["confirm-form"];
@@ -51,13 +51,13 @@ export const cardElements = ".cards__list";
 export const cardTemplate = "#card-template";
 export const imgItem = document.querySelector(".modal__image-preview");
 export const imgItemTitle = document.querySelector(".modal__image-title");
-export const imageModal = "#image-modal";
-export const closeButton = document.querySelector(".modal__close");
-export const titleInput = document.querySelector("#titleInput");
-export const linkInput = document.querySelector("#linkInput");
+// export const imageModal = "#image-modal";
+// export const closeButton = document.querySelector(".modal__close");
+// export const titleInput = document.querySelector("#titleInput");
+// export const linkInput = document.querySelector("#linkInput");
 
 export const validationSettings = {
-  // formSelector: ".modal__form",
+  formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",

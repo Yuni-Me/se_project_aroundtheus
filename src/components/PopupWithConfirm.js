@@ -11,13 +11,12 @@ export default class PopupWithConfirm extends Popup {
   open(item) {
     super.open();
     this._item = item;
-    this._setEventListeners();
   }
 
   _handleSubmit = (event) => {
     event.preventDefault();
     this._handleFormSubmit(this._item);
-    super.close();
+    // super.close();
   };
 
   renderLoading(isLoading, loadingText = "Deleting...") {
@@ -31,5 +30,10 @@ export default class PopupWithConfirm extends Popup {
   _setEventListeners() {
     super._setEventListeners();
     this._popupForm.addEventListener("submit", this._handleSubmit);
+  }
+
+  close() {
+    super.close();
+    this._popupForm.removeEventListener("submit", this._handleSubmit);
   }
 }

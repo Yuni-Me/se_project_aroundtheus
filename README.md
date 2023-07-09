@@ -33,6 +33,7 @@ Te purpose of this website is to create an interactive page where users can add 
 - Figma
 - Responsive Websites
 - Media Queries
+- JavaScript
 
 ### Improvement
 

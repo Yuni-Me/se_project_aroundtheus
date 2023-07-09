@@ -14,6 +14,10 @@ export default class Api {
     return res.json();
   }
 
+  async _request(url, options) {
+    return fetch(url, options).then(this._checkResponse);
+  }
+
   async getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
@@ -31,51 +35,41 @@ export default class Api {
   }
 
   async editUserProfile({ title: name, description: about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ name, about }),
-    }).then((res) => {
-      return this._checkResponse(res);
     });
   }
 
   async addCard({ title: name, link }) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this._request(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({ name, link }),
-    }).then((res) => {
-      return this._checkResponse(res);
     });
   }
 
   async deleteCard({ _id }) {
-    return fetch(`${this._baseUrl}/cards/${_id}`, {
+    return this._request(`${this._baseUrl}/cards/${_id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) => {
-      return this._checkResponse(res);
     });
   }
 
   async changeLikeStatus(cardId, isLiked) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+    return this._request(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
-    }).then((res) => {
-      return this._checkResponse(res);
     });
   }
 
   async updateAvatarPicture(avatar) {
-    return fetch(`${this._baseUrl}/users/me/avatar/`, {
+    return this._request(`${this._baseUrl}/users/me/avatar/`, {
       method: "PATCH",
       creadentials: "same-origin",
       headers: this._headers,
       body: JSON.stringify({ avatar }),
-    }).then((res) => {
-      return this._checkResponse(res);
     });
   }
 }
