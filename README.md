@@ -23,7 +23,7 @@ This project is made so all the elements are displayed correctly on popular scre
 
 #
 
-Te purpose of this website is to create an interactive page where users can add and remove photos their photos and photos of other users. Users can make minor adjustments to their own profile.
+Te purpose of this website is to create an interactive page where users can add and remove their photos and photos of other users. Users can make minor adjustments to their own profile.
 
 ### Project features
 
