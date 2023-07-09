@@ -1,7 +1,6 @@
-import { imgItem, imgItemTitle } from "../utils/constants.js";
 import Popup from "./Popup.js";
 export default class PopupWithImage extends Popup {
-  constructor(popupSelector) {
+  constructor(popupSelector, imgItem, imgItemTitle) {
     super({ popupSelector });
     this._imageItemPreview = imgItem;
     this._titleItemPreview = imgItemTitle;

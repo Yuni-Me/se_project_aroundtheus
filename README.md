@@ -15,10 +15,6 @@ This project is made so all the elements are displayed correctly on popular scre
 
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
 
-**Images**
-
-![Around The U.S.](./images/aroundtheus.jpg)
-
 **Site**
 
 - [Link to the project on my GitHub Pages](https://Yuni-Me.github.io/se_project_aroundtheus/)
@@ -27,7 +23,7 @@ This project is made so all the elements are displayed correctly on popular scre
 
 #
 
-Te purpose of this website is to create an interactive page where users can add and remove photos their photos and photos of other users. Users can make minor adjustments to their own profile.
+Te purpose of this website is to create an interactive page where users can add and remove their photos and photos of other users. Users can make minor adjustments to their own profile.
 
 ### Project features
 
@@ -37,6 +33,7 @@ Te purpose of this website is to create an interactive page where users can add 
 - Figma
 - Responsive Websites
 - Media Queries
+- JavaScript
 
 ### Improvement
 
